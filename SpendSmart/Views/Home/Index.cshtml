@@ -4,5 +4,11 @@
 
 <div class="text-center">
     <h1 class="display-4">Hey pardner</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a asp-action="Expenses" class="btn btn-primary">Overview</a>
+    <a asp-action="CreateEditExpense" class="btn btn-secondary">Create new</a>
 </div>
+
+
+@* You only need to specify asp-action and not asp-controller because this view already lives
+    within the Home controller.
+*@

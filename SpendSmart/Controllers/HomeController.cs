@@ -8,9 +8,12 @@ namespace SpendSmart.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly SpendSmartDbContext _context;
+
+        public HomeController(ILogger<HomeController> logger, SpendSmartDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -21,6 +24,19 @@ namespace SpendSmart.Controllers
         public IActionResult Expenses()
         {
             return View();
+        }
+
+        public IActionResult CreateEditExpense()
+        {
+            return View();
+        }
+
+        public IActionResult CreateEditExpenseForm(Expense model)
+        {
+            _context.Expenses.Add(model);
+            _context.SaveChanges();
+
+            return RedirectToAction("Expenses");
         }
 
         // HomeController corresponds to Home view folder which has both Index and Privacy.
@@ -40,4 +56,4 @@ namespace SpendSmart.Controllers
 
 
 // Following tutorial https://www.youtube.com/watch?v=xuFdrXqpPB0
-// Left off at 14:15
+// Left off at 34:00
